@@ -26,5 +26,4 @@ git push
 
 # Clean up
 cd ..
-cd ..
 rm -rf tmp
