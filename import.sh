@@ -17,12 +17,13 @@ cd tmp
 gh repo create --confirm --private $GITHUB_OWNER/$GITBUCKET_REPO
 
 # Clone the source into a subfolder
-git clone $SOURCE_REPO
+git clone --mirror $SOURCE_REPO
 cd $GITBUCKET_REPO
 
 # Import it into the new GitHub repo
 git remote set-url origin $DEST_REPO
-git push
+git push --mirror
+# TODO: Default on GitHub appears to be the first alphabetically and not the default on the source server
 
 # Clean up
 cd ..
