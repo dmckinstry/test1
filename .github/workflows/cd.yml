@@ -2,11 +2,11 @@ name: CD
 on:
   workflow_dispatch:
     inputs:
-      message:
+    - message:
         description: 'some message'     
         required: true
         default: 'hi'
-      another:
+    - another:
 jobs:
   build:
     runs-on: ubuntu-latest
