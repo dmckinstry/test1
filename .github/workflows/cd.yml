@@ -17,4 +17,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello, world!
-      - run: echo "message = ${{message}}"
+      - run: echo "message = ${{env.message}}"
