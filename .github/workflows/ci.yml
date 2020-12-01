@@ -11,3 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello, world!
+  trigger_deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Invoke workflow without inputs
+      uses: benc-uk/workflow-dispatch@v1
+      with:
+        workflow: CD
+        token: ${{ secrets.PERSONAL_TOKEN }}
+        inputs: '{ "message": "blah blah", "debug": true }'
