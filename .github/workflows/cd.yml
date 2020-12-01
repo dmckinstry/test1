@@ -1,19 +1,15 @@
 name: CD
 on:
   workflow_dispatch:
-    inputs: 
-      name: message
+    inputs:
+      message:
+        description: 'some message'     
+        required: true
+        default: 'hi'
+      debug:
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello, world!
-  trigger_deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-    - name: Invoke workflow without inputs
-      uses: benc-uk/workflow-dispatch@v1
-      with:
-        workflow: CD
-        token: ${{ secrets.PERSONAL_TOKEN }}
+      - run: echo "message = ${{message}}"
