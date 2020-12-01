@@ -1,4 +1,5 @@
 name: CD
+
 on:
   workflow_dispatch:
     inputs:
@@ -7,6 +8,8 @@ on:
         required: true
         default: 'hi'
     - another:
+      description: 'Another param'
+
 jobs:
   build:
     runs-on: ubuntu-latest
