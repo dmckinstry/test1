@@ -3,18 +3,38 @@ name: CD
 on:
   workflow_dispatch:
     inputs:
-      message:
-        description: 'some message'     
+      environment:
+        description: 'Target environment'     
         required: true
-        default: 'hi'
-      another:
-        description: 'Another param'
-        required: false
-        default: 'Mona the Octocat'
+#         default: '[Nothing]'
 
 jobs:
-  deploy:
+  setup:
     runs-on: ubuntu-latest
     steps:
-      - run: echo Hello, world!
-      - run: echo "message = ${{github.event.inputs.message}}"
+      - run: echo "Preaparing to deploy to ${{github.event.inputs.environment}}"
+          
+  qa:
+    needs: setup
+    if: ${{github.event.inputs.environment}} = "QA"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying "
+      - run: echo "Running integration tests"
+      - run: echo "Publishing release package"
+
+  staging:
+    needs: setup
+    if: ${{github.event.inputs.environment}} = "STG"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying"
+      - run: echo "Running load tests"
+
+  production:
+    needs: setup
+    if: ${{github.event.inputs.environment}} = "PROD"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying"
+      - run: echo "Running smoke tests"
