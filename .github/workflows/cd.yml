@@ -6,7 +6,7 @@ on:
         description: 'some message'     
         required: true
         default: 'hi'
-      debug:
+      another:
 jobs:
   build:
     runs-on: ubuntu-latest
