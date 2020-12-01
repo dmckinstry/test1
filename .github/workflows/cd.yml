@@ -17,4 +17,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello, world!
-      - run: echo "message = ${{env.message}}"
+      - run: echo "message = ${{github.event.inputs.message}}"
