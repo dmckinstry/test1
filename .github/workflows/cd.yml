@@ -2,16 +2,16 @@ name: CD
 
 on:
   workflow_dispatch:
-    inputs:
-    - message:
-        description: 'some message'     
-        required: true
-        default: 'hi'
-    - another:
-      description: 'Another param'
+#     inputs:
+#     - message:
+#         description: 'some message'     
+#         required: true
+#         default: 'hi'
+#     - another:
+#       description: 'Another param'
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello, world!
