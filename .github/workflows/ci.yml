@@ -20,4 +20,4 @@ jobs:
       with:
         workflow: CD
         token: ${{ secrets.PERSONAL_TOKEN }}
-        inputs: '{ "message": "blah blah", "debug": true }'
+        inputs: '{ "message": "blah blah", "another": "hello world" }'
