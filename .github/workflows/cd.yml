@@ -6,7 +6,6 @@ on:
       environment:
         description: 'Target environment'     
         required: true
-#         default: '[Nothing]'
 
 jobs:
   setup:
@@ -16,7 +15,7 @@ jobs:
           
   qa:
     needs: setup
-    if: github.event.inputs.environment == "QA"
+    if: github.event.inputs.environment == 'QA'
     runs-on: ubuntu-latest
     steps:
       - run: echo "Deploying "
@@ -25,7 +24,7 @@ jobs:
 
   staging:
     needs: setup
-    if: github.event.inputs.environment == "STG"
+    if: github.event.inputs.environment == 'STG'
     runs-on: ubuntu-latest
     steps:
       - run: echo "Deploying"
@@ -33,7 +32,7 @@ jobs:
 
   production:
     needs: setup
-    if: github.event.inputs.environment == "PROD"
+    if: github.event.inputs.environment == 'PROD'
     runs-on: ubuntu-latest
     steps:
       - run: echo "Deploying"
